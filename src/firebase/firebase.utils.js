@@ -15,7 +15,7 @@ const config = {
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
-  const userRef = firebase.doc(`users/${userAuth.uid}`);
+  const userRef = fireStore.doc(`users/${userAuth.uid}`);
 
   const snapShot = await userRef.get();
 
@@ -41,7 +41,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+export const fireStore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({promt: 'select_account'});
